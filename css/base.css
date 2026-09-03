@@ -1,0 +1,227 @@
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                      */
+/* ------------------------------------------------------------------ */
+/* Self hosted, OFL-licensed (SIL Open Font License), see assets/fonts/*-OFL.txt */
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets/fonts/Quicksand-Variable.ttf') format('truetype-variations');
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../assets/fonts/Nunito-Variable.ttf') format('truetype-variations');
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+:root {
+  /* Space palette */
+  --color-purple-600: #6d1fd1;
+  --color-purple-500: #8b3ff0;
+  --color-magenta-500: #ff17d4;
+  --color-magenta-400: #ff5fe0;
+
+  /* Kawaii palette */
+  --color-kawaii-bg: #fff0f6;
+  --color-kawaii-card: #ffffff;
+  --color-kawaii-primary: #e882ae;
+  --color-kawaii-secondary: #ffa3c3;
+  --color-kawaii-text: #2f1c26;
+  --color-kawaii-text-muted: #6a5862;
+  --color-kawaii-border: #cdbfc6;
+  --color-kawaii-sunken: #ffdce8;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+  --font-kawaii-heading: 'Quicksand', var(--font-sans);
+  --font-kawaii-body: 'Nunito', var(--font-sans);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  --container-width: 1100px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  --shadow-sm: 0 1px 3px rgba(20, 6, 41, 0.12);
+  --shadow-md: 0 8px 24px rgba(20, 6, 41, 0.16);
+
+  --accent-gradient: linear-gradient(135deg, var(--color-purple-600), var(--color-magenta-500));
+
+  --font-heading: var(--font-mono);
+  --font-body: var(--font-sans);
+}
+
+/* Light theme (default), kawaii */
+:root,
+[data-theme='light'] {
+  --bg: var(--color-kawaii-bg);
+  --bg-elevated: var(--color-kawaii-card);
+  --bg-sunken: var(--color-kawaii-sunken);
+  --text: var(--color-kawaii-text);
+  --text-muted: var(--color-kawaii-text-muted);
+  --border: var(--color-kawaii-border);
+  --accent: var(--color-kawaii-secondary);
+  --accent-strong: var(--color-kawaii-primary);
+  --terminal-bg: #1c1027;
+  --terminal-text: #ede6fb;
+  --focus-ring: var(--color-kawaii-primary);
+
+  --accent-gradient: linear-gradient(135deg, #ffb6c1, var(--color-kawaii-primary));
+  --font-heading: var(--font-kawaii-heading);
+  --font-body: var(--font-kawaii-body);
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+}
+
+/* Dark / terminal theme */
+[data-theme='dark'] {
+  --bg: #10091a;
+  --bg-elevated: #170f26;
+  --bg-sunken: #0a0510;
+  --text: #ede6fb;
+  --text-muted: #a89bc4;
+  --border: #2c1c47;
+  --accent: var(--color-purple-500);
+  --accent-strong: var(--color-magenta-400);
+  --terminal-bg: #0a0510;
+  --terminal-text: #ede6fb;
+  --focus-ring: #ff5fe0;
+
+  /* Reset kawaii only overrides: :root always matches too, so dark must restate its own values */
+  --accent-gradient: linear-gradient(135deg, var(--color-purple-600), var(--color-magenta-500));
+  --font-heading: var(--font-mono);
+  --font-body: var(--font-sans);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* SVG gradient stops follow the same tokens as the CSS gradient above */
+.brand-gradient__start { stop-color: var(--color-purple-600); }
+.brand-gradient__end { stop-color: var(--color-magenta-500); }
+
+/* ------------------------------------------------------------------ */
+/* Reset                                                              */
+/* ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+h1, h2, h3, h4, p, ul, ol, figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                          */
+/* ------------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-3);
+  z-index: 100;
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+  margin-bottom: var(--space-2);
+}
+
+.section__title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

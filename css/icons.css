@@ -1,0 +1,46 @@
+/* ------------------------------------------------------------------ */
+/* Icons (CSS masks; tinted via currentColor)                        */
+/* ------------------------------------------------------------------ */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--icon-size, 1.25em);
+  height: var(--icon-size, 1.25em);
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.icon--menu { --icon: url("../assets/icons/menu.svg"); }
+
+.icon--close { --icon: url("../assets/icons/close.svg"); }
+
+.icon--sun { --icon: url("../assets/icons/sun.svg"); }
+
+.icon--moon { --icon: url("../assets/icons/moon.svg"); }
+
+.icon--globe { --icon: url("../assets/icons/globe.svg"); }
+
+.icon--mail { --icon: url("../assets/icons/mail.svg"); }
+
+.icon--chevron-up { --icon: url("../assets/icons/chevron-up.svg"); }
+
+.icon--github { --icon: url("../assets/icons/github.svg"); }
+
+.icon--linkedin { --icon: url("../assets/icons/linkedin.svg"); }
+
+.icon--invader { --icon: url("../assets/icons/invader.svg"); }
+
+.icon--gamepad { --icon: url("../assets/icons/gamepad.svg"); }
+
+.icon--diamond { --icon: url("../assets/icons/diamond.svg"); }
+
+.icon--star { --icon: url("../assets/icons/star.svg"); }
+
+.icon--bolt { --icon: url("../assets/icons/bolt.svg"); }
+
+.icon--brain { --icon: url("../assets/icons/brain.svg"); }
+
+.icon--coffee { --icon: url("../assets/icons/coffee.svg"); }
+
+.icon--musicnote { --icon: url("../assets/icons/musicnote.svg"); }
